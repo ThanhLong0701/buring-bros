@@ -1,7 +1,7 @@
 // ProductList.tsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import'../App.css'
 interface Product {
   id: number;
   title: string;
@@ -67,15 +67,16 @@ const ProductList: React.FC = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      <ul>
+      <div className="product-grid">
         {products.map((product) => (
-          <li key={product.id}>
-            <img src={product.thumbnail} alt={product.title} />
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-          </li>
+          <div key={product.id} className="product-item">
+            <img src={product.thumbnail} alt={product.title} className="product-image" />
+            <p className="product-title">{product.title}</p>
+            <p className="product-price">${product.price}</p>
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   );
 };
